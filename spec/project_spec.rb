@@ -70,4 +70,32 @@ describe(Project) do
       expect(test_project.volunteers()).to(eq([test_volunteer, test_volunteer2]))
     end
   end
+  describe("#update") do
+    it("lets you update projects in the database") do
+      project = Project.new({:project_name => "Selflessly being selfless", :id => nil})
+      project.save()
+      project.update({:project_name => "Greedy people always lose"})
+      expect(project.project_name()).to(eq("Greedy people always lose"))
+    end
+  end
+  describe("#delete") do
+    it("lets you delete a project from the database") do
+      project = Project.new({:project_name => "Charity Drive", :id => nil})
+      project.save()
+      project2 = Project.new({:project_name => "Save the Rainforest", :id => nil})
+      project2.save()
+      project.delete()
+      expect(Project.all()).to(eq([project2]))
+    end
+    it("deletes a list's tasks from the database") do
+     project = Project.new({:project_name => "Epicodus stuff", :id => nil})
+     project.save()
+     volunteer = Volunteer.new({:name => "James Dean", :project_id => project.id()})
+     volunteer.save()
+     volunteer2 = Volunteer.new({:name => "Jimmy Hendricks", :project_id => project.id()})
+     volunteer2.save()
+     project.delete()
+     expect(Volunteer.all()).to(eq([]))
+   end
+  end
 end
