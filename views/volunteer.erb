@@ -1,0 +1,30 @@
+
+<h1><%= @volunteer.name() %></h1>
+
+<p><a href="/volunteers/<%= @volunteer.id() %>/edit">Edit <%= @volunteer.name() %> volunteer</a></p>
+
+
+
+
+<h3>Add a volunteer to <%= @volunteer.name() %> </h3>
+
+<form action="/volunteers" method="post">
+  <input id="volunteer_id" name="volunteer_id" type="hidden" value="<%= @volunteer.id() %>">
+
+  <label for="name">Enter in the full name of the volunteer:</label>
+  <input name="name" type="text">
+
+  <button type="submit">Add Volunteer to this volunteer!</button>
+</form>
+
+<hr>
+
+<div class="container">
+  <a href="/">Home</a>
+  <a href="/volunteers">View All Volunteers</a>
+  <a href="/volunteers/new">Add New volunteer</a>
+</div>
+
+<div class="container">
+  <a href="/"><button class="btn">Home</a>
+</div>
