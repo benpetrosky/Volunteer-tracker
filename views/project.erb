@@ -1,6 +1,9 @@
 
 <h1><%= @project.project_name() %></h1>
 
+<p><a href="/projects/<%= @project.id() %>/edit">Edit <%= @project.name() %> project</a></p>
+
+
 <% if @project.volunteers().any?() %>
   <h3>Here are all the volunteers in this project:</h3>
 

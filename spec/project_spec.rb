@@ -63,9 +63,9 @@ describe(Project) do
     it("returns an array of volunteers working on that project") do
       test_project = Project.new({:id => nil, :project_name => "Feed the animals drive"})
       test_project.save()
-      test_volunteer = Volunteer.new({:name => "Billy Jean", :project_id => test_project.id()})
+      test_volunteer = Volunteer.new({:id =>nil, :name => "Billy Jean", :project_id => test_project.id()})
       test_volunteer.save()
-      test_volunteer2 = Volunteer.new({:name => "Michael Jackson", :project_id => test_project.id()})
+      test_volunteer2 = Volunteer.new({:id => nil, :name => "Michael Jackson", :project_id => test_project.id()})
       test_volunteer2.save()
       expect(test_project.volunteers()).to(eq([test_volunteer, test_volunteer2]))
     end
@@ -87,12 +87,12 @@ describe(Project) do
       project.delete()
       expect(Project.all()).to(eq([project2]))
     end
-    it("deletes a list's tasks from the database") do
+    it("deletes a project's volunteers from the database") do
      project = Project.new({:project_name => "Epicodus stuff", :id => nil})
      project.save()
-     volunteer = Volunteer.new({:name => "James Dean", :project_id => project.id()})
+     volunteer = Volunteer.new({:id => nil, :name => "James Dean", :project_id => project.id()})
      volunteer.save()
-     volunteer2 = Volunteer.new({:name => "Jimmy Hendricks", :project_id => project.id()})
+     volunteer2 = Volunteer.new({:id => nil, :name => "Jimmy Hendricks", :project_id => project.id()})
      volunteer2.save()
      project.delete()
      expect(Volunteer.all()).to(eq([]))

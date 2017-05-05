@@ -40,5 +40,22 @@ end
      expect(volunteer1).to(eq(volunteer2))
    end
  end
-
+ describe("#update") do
+   it("lets you update volunteers in the database") do
+     volunteer = Volunteer.new({:id => nil, :name => "Robert Griffin III", :project_id => 1})
+     volunteer.save()
+     volunteer.update({:name => "Bobby"})
+     expect(volunteer.name()).to(eq("Bobby"))
+   end
+ end
+ describe("#delete") do
+   it("lets you delete a volunteer from the database") do
+     volunteer = Volunteer.new({:id => nil, :name => "Bob Dylan", :project_id => 1})
+     volunteer.save()
+     volunteer2 = Volunteer.new({:id => nil, :name => "Stevie Nicks", :project_id => 1})
+     volunteer2.save()
+     volunteer.delete()
+     expect(Volunteer.all()).to(eq([volunteer2]))
+   end
+ end
 end
