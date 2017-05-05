@@ -1,0 +1,16 @@
+<h1>Below is a list of all projects we utilize our volunteers for.</h1>
+
+<% if @projects.any?() %>
+  <h3>Here are your projects:</h3>
+
+  <ul>
+    <% @projects.each() do |project| %>
+      <li><a href="/projects/<%= project.id()%>"><%= project.project_name() %></a> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+    <p>There are currently no projects we are utilizing volunteers for.</p>
+
+<% end %>
