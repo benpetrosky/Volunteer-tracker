@@ -32,6 +32,11 @@ get("/projects/:id") do
   erb(:project)
 end
 
+get("/volunteers") do
+  @volunteers = Volunteer.all()
+  erb(:volunteers)
+end
+
 post("/volunteers") do
   name = params.fetch("name")
   project_id = params.fetch("project_id").to_i()
