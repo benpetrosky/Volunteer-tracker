@@ -44,7 +44,7 @@ describe(Project) do
     it("is the same prect if it has the same name") do
       project = Project.new({:id => nil, :project_name => "Feed the animals drive"})
       project2 = Project.new({:id => nil, :project_name => "Feed the animals drive"})
-      expect(project1).to(eq(project2))
+      expect(project).to(eq(project2))
     end
   end
 
