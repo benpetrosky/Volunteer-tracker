@@ -2,9 +2,9 @@ class Volunteer
   attr_accessor(:id, :name, :project_id)
 
   def initialize(attributes)
-    @id = attributes.fetch(:id)
+    @id = attributes.fetch(:id).to_i
     @name = attributes.fetch(:name)
-    @project_id = attributes.fetch(:project_id)
+    @project_id = attributes.fetch(:project_id).to_i
   end
 
   def self.all
