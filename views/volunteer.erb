@@ -1,21 +1,23 @@
 
 <h1><%= @volunteer.name() %></h1>
 
-<p><a href="/volunteers/<%= @volunteer.id() %>/edit">Edit <%= @volunteer.name() %> volunteer</a></p>
+<hr>
+<form action="/volunteer_delete/<%= @volunteer.id()%>" method="post">
+  <input type="hidden" name="_method" value="delete">
 
+  <button type="submit">Delete this Volunteer from the Database.</button>
 
-
-
-<h3>Add a volunteer to <%= @volunteer.name() %> </h3>
-
-<form action="/volunteers" method="post">
-  <input id="volunteer_id" name="volunteer_id" type="hidden" value="<%= @volunteer.id() %>">
-
-  <label for="name">Enter in the full name of the volunteer:</label>
-  <input name="name" type="text">
-
-  <button type="submit">Add Volunteer to this volunteer!</button>
 </form>
+<hr>
+<h3>Fill in this form to change the name of the volunteer</h3>
+<form action="/update_volunteer/<%= @volunteer.id() %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Change the name of this volunteer</label>
+  <input type="text" name="name">
+
+  <button type="submit">Change the name of this volunteer</button>
+</form>
+
 
 <hr>
 

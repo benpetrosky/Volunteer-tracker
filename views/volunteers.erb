@@ -5,7 +5,7 @@
 
   <ul>
     <% @volunteers.each() do |volunteer| %>
-      <li><%= volunteer.name() %></li>
+      <li><a href="volunteer/<%= volunteer.id()%>"><%= volunteer.name() %></a></li>
     <% end %>
   </ul>
 
@@ -14,3 +14,5 @@
     <p>There are currently no volunteers we are utilizing volunteers for.</p>
 
 <% end %>
+
+<a href="/"> Home </a>

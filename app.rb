@@ -40,24 +40,6 @@ delete("/project_delete/:id") do
   erb(:projects)
 end
 
-get("/projects/:id/edit") do
-  @project = Project.find(params.fetch("id").to_i())
-  erb(:project_edit)
-end
-
-patch("/projects/:id") do
-  name = params.fetch("name")
-  @project = project.find(params.fetch("id").to_i())
-  @project.update({:name => name})
-  erb(:project)
-end
-
-delete("/projects/:id") do
-  @project = Project.find(params.fetch("id").to_i())
-  @project.delete()
-  @projects = Project.all()
-  erb(:index)
-end
 
 get("/volunteers") do
   @volunteers = Volunteer.all()
@@ -73,25 +55,37 @@ post("/volunteers") do
   erb(:volunteer_success)
 end
 
-get("/volunteers/:id") do
-  @volunteer = Volunteer.find(params.fetch("id").to_i())
-  erb(:volunteer)
-end
-get("/volunteers/:id/edit") do
-  @volunteer = Volunteer.find(params.fetch("id").to_i())
-  erb(:volunteer_edit)
-end
-
-patch("/volunteers/:id") do
+patch("/update_project/:id") do
+  id = params.fetch("id").to_i
   name = params.fetch("name")
-  @volunteer = volunteer.find(params.fetch("id").to_i())
-  @volunteer.update({:name => name})
+  @project = Project.find(id)
+  @project.update(:project_name => name)
+  erb(:project)
+end
+# here
+
+get("/volunteer/:id") do
+  @volunteer = Volunteer.find(params.fetch("id").to_i())
   erb(:volunteer)
 end
 
-delete("/volunteers/:id") do
+get("/volunteer_delete/volunteer/:id") do
   @volunteer = Volunteer.find(params.fetch("id").to_i())
-  @volunteer.delete()
+  erb(:volunteer)
+end
+
+delete("/volunteer_delete/:id") do
+  id = params.fetch("id").to_i
+  volunteer = Volunteer.find(id)
+  volunteer.delete()
   @volunteers = Volunteer.all()
-  erb(:index)
+  erb(:volunteers)
+end
+
+patch('/update_volunteer/:id') do
+  id = params.fetch("id").to_i
+  name = params.fetch("name")
+  @volunteer = Volunteer.find(id)
+  @volunteer.update(:name => name)
+  erb(:volunteer)
 end

@@ -33,6 +33,15 @@
 </form>
 
 <hr>
+<h3>Fill in this form to change the name of the project</h3>
+<form action="/update_project/<%= @project.id() %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Change the name of this project</label>
+  <input type="text" name="name">
+
+  <button type="submit">Change the name of this project</button>
+</form>
+<hr>
 
 <div class="container">
   <a href="/">Home</a>
