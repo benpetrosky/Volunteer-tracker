@@ -31,6 +31,15 @@ get("/projects/:id") do
   @project = Project.find(params.fetch("id").to_i())
   erb(:project)
 end
+
+delete("/project_delete/:id") do
+  id = params.fetch("id").to_i
+  project = Project.find(id)
+  project.delete()
+  @projects = Project.all()
+  erb(:projects)
+end
+
 get("/projects/:id/edit") do
   @project = Project.find(params.fetch("id").to_i())
   erb(:project_edit)

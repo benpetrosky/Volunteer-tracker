@@ -1,7 +1,12 @@
 
 <h1><%= @project.project_name() %></h1>
 
-<p><a href="/projects/<%= @project.id() %>/edit">Edit <%= @project.name() %> project</a></p>
+<form action="/project_delete/<%=s @project.id()%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+
+  <button type="submit">Delete Project From Database and all volunteers associated with the project!</button>
+
+</form>
 
 
 <% if @project.volunteers().any?() %>
