@@ -6,32 +6,43 @@
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_A simple database of projects for a non profit that can add projects and from the view the individual projects can assign volunteers to that project.  The project can be changed and deleted.  The volunteers can be changed and deleted.  Each volunteer may only be assigned to one project._
 
 ## Setup/Installation Requirements
 
+clone this repository on your desktop
+in your terminal:
+  move into the project folder
+  run bundle Installation
+  run postgress
+in another terminal window:
+  run psql
+  CREATE DATABASE volunteer_tracker;
+  \c volunteer_tracker;
+  CREATE TABLE projects (id PRIMARY KEY, project_name varchar);
+  CREATE TABLE volunteers (id serial PRIMARY KEY, name varchar, project_id int);
+in another terminal window:
+  run ruby app.rb
+  open the local host provided in the browser of your choice.
 
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+_There are no known bugs._
 
 ## Support and contact details
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+_If you have any suggestions please feel free to contribute to the code._
 
 ## Technologies Used
 
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
+sql
+ruby
 
 ### License
 
-*{Determine the license under which this application can be used.  See below for more details on licensing.}*
+This is software is licensed under MIT License.
 
-Copyright (c) 2016 **_{List of contributors or company name}_**
+Copyright (c) 2017 **_Ben Petrosky_**
